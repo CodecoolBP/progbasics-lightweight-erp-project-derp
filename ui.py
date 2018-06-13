@@ -1,5 +1,5 @@
 """ User Interface (UI) module """
-
+import data_manager
 
 def print_table(table, title_list):
     """
@@ -23,10 +23,12 @@ def print_table(table, title_list):
     """
 
     # your goes code
-
+    table = []
+    for i in table:
+        print(i)
 
 def print_result(result, label):
-    """
+    """---------------
     Displays results of the special functions.
 
     Args:
@@ -60,7 +62,7 @@ def print_menu(title, list_options, exit_message):
     Returns:
         None: This function doesn't return anything it only prints to console.
     """
-
+    print(title, list_options, exit_message)
     # your code
 
 
@@ -84,9 +86,9 @@ def get_inputs(list_labels, title):
             [<user_input_1>, <user_input_2>, <user_input_3>]
     """
     inputs = []
-
-    # your code
-
+    for item in list_labels:
+        input_to_add = input('%s' %(item))
+        inputs.append(input_to_add)
     return inputs
 
 
