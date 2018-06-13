@@ -28,7 +28,10 @@ def start_module():
     Returns:
         None
     """
-
+    title = "Sales manager"
+    exit_message = "Back to main menu"
+    list_options = ["show table", "add", "remove", "update", "highest profit", "average profit"]
+    ui.print_menu(title,list_options, exit_message)
     # your code
 
 
