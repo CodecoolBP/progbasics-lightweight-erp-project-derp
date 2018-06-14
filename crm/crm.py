@@ -44,9 +44,9 @@ def start_module():
             elif option == "2":
                 add(table)
             elif option == "3":
-                remove(table, id_)
+                remove(table,ui.get_inputs(["ID: "], "")[0])
             elif option == "4":
-                update(table,id_)
+                update(table,ui.get_inputs(["ID: "], "")[0])
             elif option == "0":
                 break
 
@@ -101,8 +101,11 @@ def remove(table, id_):
     """
 
     # your code
-
-    return table
+    for line in table:
+        if id_ in line:
+            table.remove(line)
+            data_manager.write_table_to_file("crm/customers.csv", table)
+            return table
 
 
 def update(table, id_):
@@ -118,8 +121,16 @@ def update(table, id_):
     """
 
     # your code
-
-    return table
+    for idx, line in enumerate(table):
+        if id_ in line:
+            temp_line = []
+            for element in line:
+                update_things = ui.get_inputs(["Update (" + str(element) + ") to: "], "")[0]
+                temp_line.append(update_things)
+            del table[idx]
+            table.append(temp_line)
+            break
+    data_manager.write_table_to_file("crm/customers.csv", table)
 
 
 # special functions:

@@ -20,7 +20,7 @@ def generate_random(table):
     """
 
     generated = ''.join(random.choice(string.ascii_uppercase + string.digits + 
-    string.ascii_lowercase + string.punctuation) for _ in range(6))
+    string.ascii_lowercase + string.punctuation) for _ in range(8))
 
     return generated
 

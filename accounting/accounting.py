@@ -35,7 +35,7 @@ def start_module():
         
         inputs = ui.get_inputs(["Please enter a number: "], "")
         option = inputs[0]
-        file_name = "accounting/accounting.csv"
+        file_name = "accounting/items.csv"
         title_list = ["id","title","price","month","day","year"]
         table = data_manager.get_table_from_file(file_name)
         id_ = ''
@@ -45,9 +45,9 @@ def start_module():
         elif option == "2":
             add(table)
         elif option == "3":
-            remove(table, id_)
+            remove(table,ui.get_inputs(["ID: "], "")[0])
         elif option == "4":
-            update(table,id_)
+            update(table,ui.get_inputs(["ID: "], "")[0])
         elif option == "0":
             break
 
@@ -103,12 +103,13 @@ def remove(table, id_):
     Returns:
         list: Table without specified record.
     """
-    id_ = ui.get_inputs(list_titles, "")
 
     for line in table:
         if id_ in line:
             table.remove(line)
+            data_manager.write_table_to_file("crm/customers.csv", table)
             return table
+
     
 
     # your code
@@ -126,14 +127,17 @@ def update(table, id_):
     Returns:
         list: table with updated record
     """
-    id_list = []
-    list_titles = ["id", "month", "day", "year", "type", "amount"]
-    for line in table:
-        if id_ in line:
-            line = [] + ui.get_inputs(list_titles)
-    # your code
 
-    return table
+    for idx, line in enumerate(table):
+        if id_ in line:
+            temp_line = []
+            for element in line:
+                update_things = ui.get_inputs(["Update (" + str(element) + ") to: "], "")[0]
+                temp_line.append(update_things)
+            del table[idx]
+            table.append(temp_line)
+            break
+    data_manager.write_table_to_file("accounting/items.csv", table)
 
 
 # special functions:
