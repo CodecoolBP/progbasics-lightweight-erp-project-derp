@@ -26,8 +26,25 @@ def start_module():
      * User can go back to main menu from here.
 
     Returns:
-        None
-    """
+        None"""
+
+    title = "Accounting manager"
+    exit_message = "Back to main menu"
+    list_options = ["show table", "add", "remove", "update"]
+    ui.print_menu(title,list_options, exit_message)
+    
+    inputs = ui.get_inputs(["Please enter a number: "], "")
+    option = inputs[0]
+    file_name = "accounting/accounting.csv"
+    title_list = ["id","title","price","month","day","year"]
+    table = data_manager.get_table_from_file(file_name)
+
+    if option == "1":
+        show_table(table)
+    elif option == "2":
+        add(table)
+    elif option == "3"
+        remove(table, id_)
 
     # you code
 
@@ -42,7 +59,8 @@ def show_table(table):
     Returns:
         None
     """
-
+    ui.print_table(table, ["id", "month", "day", "year", "type", "amount"])
+    
     # your code
 
 
@@ -56,10 +74,13 @@ def add(table):
     Returns:
         list: Table with a new record
     """
-
+    list_titles = ["id", "month", "day", "year", "type", "amount"]
+    new_item = ui.get_inputs(list_titles, "")
+    table.append(new_item)
+    data_manager.write_table_to_file("accounting/accounting.csv", table)
+    return table
     # your code
 
-    return table
 
 
 def remove(table, id_):
@@ -73,11 +94,14 @@ def remove(table, id_):
     Returns:
         list: Table without specified record.
     """
+    for line in table:
+        if id_ in line:
+            table.remove(line)
+    return table
 
     # your code
 
-    return table
-
+    
 
 def update(table, id_):
     """

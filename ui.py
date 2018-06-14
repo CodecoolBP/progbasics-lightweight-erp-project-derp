@@ -24,11 +24,10 @@ def print_table(table, title_list):
 
     # your goes code
    
-    for i in title_list:
-        print(i)
+    
 
     for lines in table:
-      
+    
         for element in lines:
             print('| {} '.format(element), end='')
         print(' |\n')
