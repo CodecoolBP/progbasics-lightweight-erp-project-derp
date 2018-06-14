@@ -32,21 +32,16 @@ def start_module():
     exit_message = "Back to main menu"
     list_options = ["show table", "add", "remove", "update", "highest profit", "average profit"]
     ui.print_menu(title,list_options, exit_message)
-    # your code
+    
+    inputs = ui.get_inputs(["Please enter a number: "], "")
+    option = inputs[0]
+    file_name = "sales/sales.csv"
+    title_list = ["id","title","price","month","day","year"]
+    table = data_manager.get_table_from_file(file_name)
 
+    if option == "1":
+        common.show_table(table, title_list)
 
-def show_table(table):
-    """
-    Display a table
-
-    Args:
-        table (list): list of lists to be displayed.
-
-    Returns:
-        None
-    """
-
-    # your code
 
 
 def add(table):

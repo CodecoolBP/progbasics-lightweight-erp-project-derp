@@ -23,9 +23,16 @@ def print_table(table, title_list):
     """
 
     # your goes code
-    table = []
-    for i in table:
+   
+    for i in title_list:
         print(i)
+
+    for lines in table:
+      
+        for element in lines:
+            print('| {} '.format(element), end='')
+        print(' |\n')
+    
 
 def print_result(result, label):
     """---------------
@@ -85,6 +92,7 @@ def get_inputs(list_labels, title):
         list: List of data given by the user. Sample return:
             [<user_input_1>, <user_input_2>, <user_input_3>]
     """
+    
     inputs = []
     for item in list_labels:
         input_to_add = input('%s' %(item))
