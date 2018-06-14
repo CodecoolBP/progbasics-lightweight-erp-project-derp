@@ -27,6 +27,29 @@ def start_module():
     Returns:
         None
     """
+    while True:
+        title = "Storage manager"
+        exit_message = "Back to main menu"
+        list_options = ["show table", "add", "remove", "update"]
+        ui.print_menu(title,list_options, exit_message)
+
+        inputs = ui.get_inputs(["Please enter a number: "], "")
+        option = inputs[0]
+        file_name = "store/games.csv"
+        title_list = ["id","title","price","month","day","year"]
+        table = data_manager.get_table_from_file(file_name)
+        id_ = ''
+
+        if option == "1":
+            common.show_table(table,title_list)
+        elif option == "2":
+            add(table)
+        elif option == "3":
+            remove(table, id_)
+        elif option == "4":
+            update(table,id_)
+        elif option == "0":
+            break
 
     # your code
 
@@ -55,9 +78,11 @@ def add(table):
     Returns:
         list: Table with a new record
     """
-
-    # your code
-
+    list_titles = ["month: ", "day: ", "year: ", "type: ", "amount: "]
+    new_item = ui.get_inputs(list_titles, "")
+    table.append(new_item)
+    new_item.insert(0,common.generate_random(table))
+    data_manager.write_table_to_file("store/games.csv", table)
     return table
 
 
