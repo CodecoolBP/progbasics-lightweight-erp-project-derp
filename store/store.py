@@ -127,7 +127,7 @@ def update(table, id_):
             del table[idx]
             table.append(temp_line)
             break
-    data_manager.write_table_to_file("store/store.csv", table)
+    data_manager.write_table_to_file("store/games.csv", table)
 
 
 # special functions:

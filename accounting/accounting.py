@@ -107,7 +107,7 @@ def remove(table, id_):
     for line in table:
         if id_ in line:
             table.remove(line)
-            data_manager.write_table_to_file("crm/customers.csv", table)
+            data_manager.write_table_to_file("accounting/items.csv", table)
             return table
 
     

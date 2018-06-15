@@ -82,7 +82,7 @@ def add(table):
     new_item = ui.get_inputs(list_titles, "")
     table.append(new_item)
     new_item.insert(0,common.generate_random(table))
-    data_manager.write_table_to_file("invenory/inventory.csv", table)
+    data_manager.write_table_to_file("inventory/inventory.csv", table)
     return table
 
 
