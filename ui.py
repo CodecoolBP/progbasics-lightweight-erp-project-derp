@@ -26,8 +26,7 @@ def print_table(table, title_list):
    
     title_list = []
 
-    for lines in table:
-    
+    for lines in table:        
         for element in lines:
             print('| {} '.format(element), end='')
         print(' |\n')
@@ -68,7 +67,7 @@ def print_menu(title, list_options, exit_message):
     Returns:
         None: This function doesn't return anything it only prints to console.
     """
-    print("|",title,"|", list_options,"|", exit_message,"|")
+    print("\n", title,"\n", str(list_options).replace("'", "\n" ).replace(",", "").replace("[", "").replace("]",""), exit_message)
     # your code
 
 

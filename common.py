@@ -4,7 +4,6 @@ implement commonly used functions here
 import ui
 import random
 import data_manager
-import string
 
 def generate_random(table):
     """
@@ -18,10 +17,11 @@ def generate_random(table):
     Returns:
         string: Random and unique string
     """
-
-    generated = ''.join(random.choice(string.ascii_uppercase + string.digits + 
-    string.ascii_lowercase + string.punctuation) for _ in range(8))
-
+    generated = []
+    chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789~!@#$%^&*()+=[]'
+    for i in range(8):
+        generated.append(random.choice(chars))
+    generated = "".join(generated)
     return generated
 
 

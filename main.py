@@ -40,14 +40,14 @@ def choose():
 
 
 def handle_menu():
-    options = ["Store manager",
-               "Human resources manager",
-               "Inventory manager",
-               "Accounting manager",
-               "Sales manager",
-               "Customer Relationship Management (CRM)"]
+    options = ["(1) Store manager ",
+               "(2) Human resources manager ",
+               "(3) Inventory manager ",
+               "(4) Accounting manager ",
+               "(5) Sales manager ",
+               "(6) Customer Relationship Management (CRM)"]
 
-    ui.print_menu("Main menu", options, "Exit program")
+    ui.print_menu("Main menu ", options, "\nExit program\n")
 
 
 def main():
