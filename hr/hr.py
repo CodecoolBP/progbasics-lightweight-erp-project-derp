@@ -28,7 +28,7 @@ def start_module():
     while True:
             title = "HR manager"
             exit_message = "Back to main menu"
-            list_options = ["(1) Show table", "(2) Add", "(3) Remove", "(4) Update"]
+            list_options = ["(1) Show table", "(2) Add", "(3) Remove", "(4) Update", "(5) Oldest Person"]
             ui.print_menu(title,list_options, exit_message)
             
             inputs = ui.get_inputs(["Please enter a number: "], "")
@@ -46,6 +46,8 @@ def start_module():
                 remove(table,ui.get_inputs(["ID: "], "")[0])
             elif option == "4":
                 update(table,ui.get_inputs(["ID: "], "")[0])
+            elif option == "5":
+                get_oldest_person(table)
             elif option == "0":
                 break
 
@@ -146,6 +148,14 @@ def get_oldest_person(table):
     """
 
     # your code
+    max_age = 2018
+    for i in range(len(table)):
+        if int(table[i][2]) < max_age:
+            oldest_index = i
+            max_age = int(table[i][2])
+    ui.print_result(table[oldest_index][0], "ID")
+    ui.print_result(table[oldest_index][1], "Name")
+    ui.print_result(table[oldest_index][2], "Age")
 
 
 def get_persons_closest_to_average(table):

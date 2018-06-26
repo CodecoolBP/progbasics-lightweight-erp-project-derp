@@ -23,8 +23,6 @@ def print_table(table, title_list):
     """
 
     # your goes code
-   
-    title_list = []
 
     for lines in table:        
         for element in lines:
@@ -45,6 +43,7 @@ def print_result(result, label):
     """
 
     # your code
+    print('{}: {}'.format(label, result))
 
 
 def print_menu(title, list_options, exit_message):
