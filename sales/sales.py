@@ -31,7 +31,7 @@ def start_module():
     while True:
             title = "Sales manager"
             exit_message = "Back to main menu"
-            list_options = ["(1) Show table", "(2) Add", "(3) Remove", "(4) Update"]
+            list_options = ["(1) Show table", "(2) Add", "(3) Remove", "(4) Update", "(5) Cheapo game"]
             ui.print_menu(title,list_options, exit_message)
             
             inputs = ui.get_inputs(["Please enter a number: "], "")
@@ -49,6 +49,8 @@ def start_module():
                 remove(table,ui.get_inputs(["ID: "], "")[0])
             elif option == "4":
                 update(table,ui.get_inputs(["ID: "], "")[0])
+            elif option == "5":
+                get_lowest_price_item_id(table)
             elif option == "0":
                 break
 
@@ -134,6 +136,15 @@ def get_lowest_price_item_id(table):
     """
 
     # your code
+
+    lowest_price = 1000000000000000000
+    for i in range(len(table)):
+        if int(table[i][2]) < lowest_price:
+            lowest_index = i
+            lowest_price = int(table[i][2])
+
+    ui.print_result(table[lowest_index][0], "ID of lowest priced item")
+    ui.print_result(table[lowest_index][1], "ID of lowest priced item")
 
 
 def get_items_sold_between(table, month_from, day_from, year_from, month_to, day_to, year_to):
