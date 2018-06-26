@@ -153,7 +153,7 @@ def get_oldest_person(table):
         if int(table[i][2]) < max_age:
             oldest_index = i
             max_age = int(table[i][2])
-    ui.print_result(table[oldest_index][0], "ID")
+
     ui.print_result(table[oldest_index][1], "Name")
     ui.print_result(table[oldest_index][2], "Age")
 
