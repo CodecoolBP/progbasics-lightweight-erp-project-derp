@@ -29,7 +29,7 @@ def start_module():
     while True:
             title = "CRM manager"
             exit_message = "Back to main menu"
-            list_options = ["(1) Show table", "(2) Add", "(3) Remove", "(4) Update"]
+            list_options = ["(1) Show table", "(2) Add", "(3) Remove", "(4) Update", "(5) ID of lngest name"]
             ui.print_menu(title,list_options, exit_message)
             
             inputs = ui.get_inputs(["Please enter a number: "], "")
@@ -47,6 +47,8 @@ def start_module():
                 remove(table,ui.get_inputs(["ID: "], "")[0])
             elif option == "4":
                 update(table,ui.get_inputs(["ID: "], "")[0])
+            elif option == "5":
+                get_longest_name_id(table)
             elif option == "0":
                 break
 
@@ -150,7 +152,20 @@ def get_longest_name_id(table):
 
     # your code
 
-
+    
+    for i in range(len(table)):
+        longest_name = len("")
+        if len(table[i][1]) > longest_name:
+            longest_name_index = i
+            longest_name = (table[i][1])
+    ui.print_result(table[longest_name_index][0], "ID")
+'''for j in range(len(table)):
+                longest_names = []
+                if len(table[j][1] == longest_name:
+                    samesies = table[j][1]
+                longest_names.append(samesies)
+            ui.print_result(longest_names, "all names")'''
+    
 # the question: Which customers has subscribed to the newsletter?
 # return type: list of strings (where string is like email+separator+name, separator=";")
 def get_subscribed_emails(table):
