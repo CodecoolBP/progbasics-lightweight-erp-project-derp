@@ -149,6 +149,7 @@ def get_oldest_person(table):
 
     # your code
     max_age = 2018
+    oldies = []
     for i in range(len(table)):
         if int(table[i][2]) < max_age:
             oldest_index = i
@@ -156,8 +157,9 @@ def get_oldest_person(table):
     for j in range(len(table)):
         if int(table[j][2]) == max_age:
             all_oldest_index = j
-            ui.print_result(table[all_oldest_index][1], "Name")
-            ui.print_result(table[all_oldest_index][2], "Age")
+            oldies.append(table[all_oldest_index][1])
+    print(oldies)
+    return oldies
 
 
                 
