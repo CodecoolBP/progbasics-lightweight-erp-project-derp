@@ -154,19 +154,18 @@ def get_longest_name_id(table):
 
     # your code
 
-    
+    longest_name = len("a")
     for i in range(len(table)):
-        longest_name = len("")
         if len(table[i][1]) > longest_name:
             longest_name_index = i
             longest_name = len(table[i][1])
-   # ui.print_result(table[longest_name_index][0], "ID")
-            '''for j in range(len(table)):
-                longest_names = []
-                if len(table[j][1]) == longest_name:
-                    samesies = table[j][1]
-                    longest_names.append(samesies)
-            ui.print_result(longest_names, "all names")'''
+    for j in range(len(table)):
+        if len(table[j][1]) == longest_name:
+            all_longest_names = j
+            ui.print_result(table[all_longest_names][0], "ID")
+            ui.print_result(table[all_longest_names][1], "Name")
+
+
     
 # the question: Which customers has subscribed to the newsletter?
 # return type: list of strings (where string is like email+separator+name, separator=";")
