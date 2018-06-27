@@ -29,7 +29,7 @@ def start_module():
     while True:
             title = "CRM manager"
             exit_message = "Back to main menu"
-            list_options = ["(1) Show table", "(2) Add", "(3) Remove", "(4) Update", "(5) ID of lngest name"]
+            list_options = ["(1) Show table", "(2) Add", "(3) Remove", "(4) Update", "(5) ID of longest name", "(6) subscribers"]
             ui.print_menu(title,list_options, exit_message)
             
             inputs = ui.get_inputs(["Please enter a number: "], "")
@@ -49,6 +49,8 @@ def start_module():
                 update(table,ui.get_inputs(["ID: "], "")[0])
             elif option == "5":
                 get_longest_name_id(table)
+            elif option == "6":
+                get_subscribed_emails(table)
             elif option == "0":
                 break
 
@@ -157,13 +159,13 @@ def get_longest_name_id(table):
         longest_name = len("")
         if len(table[i][1]) > longest_name:
             longest_name_index = i
-            longest_name = (table[i][1])
-    ui.print_result(table[longest_name_index][0], "ID")
-'''for j in range(len(table)):
+            longest_name = len(table[i][1])
+   # ui.print_result(table[longest_name_index][0], "ID")
+            '''for j in range(len(table)):
                 longest_names = []
-                if len(table[j][1] == longest_name:
+                if len(table[j][1]) == longest_name:
                     samesies = table[j][1]
-                longest_names.append(samesies)
+                    longest_names.append(samesies)
             ui.print_result(longest_names, "all names")'''
     
 # the question: Which customers has subscribed to the newsletter?
@@ -180,3 +182,17 @@ def get_subscribed_emails(table):
         """
 
     # your code
+    subscribers = []
+    subscribed = 0
+    for line in range(len(table)):
+        if int(table[line][3]) > subscribed:
+            subscriber_index = line
+            subscriber_name = str(table[line][1])
+            subscriber_mail = str(table[line][2])
+            subscriber_info = subscriber_name, subscriber_mail
+            ui.print_result(subscriber_info, " ")
+            #subscribers.append(subscriber_info)
+  
+    ''' for line in table:
+        if "1" in line[3]:'''
+            
