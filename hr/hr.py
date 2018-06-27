@@ -153,10 +153,16 @@ def get_oldest_person(table):
         if int(table[i][2]) < max_age:
             oldest_index = i
             max_age = int(table[i][2])
+    for j in range(len(table)):
+        if int(table[j][2]) == max_age:
+            all_oldest_index = j
+            ui.print_result(table[all_oldest_index][1], "Name")
+            ui.print_result(table[all_oldest_index][2], "Age")
 
-    ui.print_result(table[oldest_index][1], "Name")
-    ui.print_result(table[oldest_index][2], "Age")
 
+                
+
+    
 
 def get_persons_closest_to_average(table):
     """
