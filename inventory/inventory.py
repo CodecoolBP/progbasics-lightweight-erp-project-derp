@@ -30,7 +30,7 @@ def start_module():
     while True:
             title = "Inventory manager"
             exit_message = "Back to main menu"
-            list_options = ["(1) Show table", "(2) Add", "(3) Remove", "(4) Update"]
+            list_options = ["(1) Show table", "(2) Add", "(3) Remove", "(4) Update", "(5) Available items"]
             ui.print_menu(title,list_options, exit_message)
             
             inputs = ui.get_inputs(["Please enter a number: "], "")
@@ -48,6 +48,8 @@ def start_module():
                 remove(table,ui.get_inputs(["ID: "], "")[0])
             elif option == "4":
                 update(table,ui.get_inputs(["ID: "], "")[0])
+            elif option == "5":
+                get_available_items(table)
             elif option == "0":
                 break
 
@@ -147,6 +149,15 @@ def get_available_items(table):
 
     # your code
 
+    list_of_durables = []
+    for line in table:
+        if int(line[3]) + int(line[4]) >= 2017:
+            durable_platforms = line
+            
+            list_of_durables.append(durable_platforms)
+    ui.print_result(list_of_durables, "Items within durability range \n")
+    return list_of_durables
+
 
 def get_average_durability_by_manufacturers(table):
     """
@@ -160,3 +171,4 @@ def get_average_durability_by_manufacturers(table):
     """
 
     # your code
+

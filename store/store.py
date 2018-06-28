@@ -30,7 +30,7 @@ def start_module():
     while True:
         title = "Storage manager"
         exit_message = "Back to main menu"
-        list_options = ["(1) Show table", "(2) Add", "(3) Remove", "(4) Update"]
+        list_options = ["(1) Show table", "(2) Add", "(3) Remove", "(4) Update", "(5) Counts by manufacturers"]
         ui.print_menu(title,list_options, exit_message)
 
         inputs = ui.get_inputs(["Please enter a number: "], "")
@@ -48,6 +48,8 @@ def start_module():
             remove(table,ui.get_inputs(["ID: "], "")[0])
         elif option == "4":
             update(table,ui.get_inputs(["ID: "], "")[0])
+        elif option == "5":
+            get_counts_by_manufacturers(table)
         elif option == "0":
             break
 
@@ -145,6 +147,15 @@ def get_counts_by_manufacturers(table):
     """
 
     # your code
+    count_the_manufacturers = {}
+    for element in table:
+        count_the_manufacturers[element[2]] = 0
+    for i in table:
+        for h in count_the_manufacturers.keys():
+            if i[2] == h:
+                count_the_manufacturers[h] += 1
+    ui.print_result(count_the_manufacturers, "Manufacturer count")
+    return(count_the_manufacturers)
 
 
 def get_average_by_manufacturer(table, manufacturer):

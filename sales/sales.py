@@ -142,10 +142,9 @@ def get_lowest_price_item_id(table):
         if int(table[i][2]) < lowest_price:
             lowest_index = i
             lowest_price = int(table[i][2])
-
+            id_of_lowest_price = table[lowest_index][0]
     ui.print_result(table[lowest_index][0], "ID of lowest priced item")
-    ui.print_result(table[lowest_index][1], "ID of lowest priced item")
-
+    return id_of_lowest_price
 
 def get_items_sold_between(table, month_from, day_from, year_from, month_to, day_to, year_to):
     """

@@ -154,16 +154,26 @@ def get_longest_name_id(table):
 
     # your code
 
+  
+
+
     longest_name = len("a")
+    names = []
+    ids = []
     for i in range(len(table)):
         if len(table[i][1]) > longest_name:
             longest_name_index = i
             longest_name = len(table[i][1])
     for j in range(len(table)):
         if len(table[j][1]) == longest_name:
-            all_longest_names = j
-            ui.print_result(table[all_longest_names][0], "ID")
-            ui.print_result(table[all_longest_names][1], "Name")
+            all_longest_names = j 
+            names.append(table[all_longest_names][1])
+            ids.append(table[all_longest_names][0])    
+    longest_names_dict = dict(zip(names, ids))
+    print(longest_names_dict)
+            #ui.print_result(table[all_longest_names][0], "ID")
+            #ui.print_result(table[all_longest_names][1], "Name")'''
+
 
 
     
@@ -181,17 +191,10 @@ def get_subscribed_emails(table):
         """
 
     # your code
-    subscribers = []
-    subscribed = 0
-    for line in range(len(table)):
-        if int(table[line][3]) > subscribed:
-            subscriber_index = line
-            subscriber_name = str(table[line][1])
-            subscriber_mail = str(table[line][2])
-            subscriber_info = subscriber_name, subscriber_mail
-            ui.print_result(subscriber_info, " ")
-            #subscribers.append(subscriber_info)
-  
-    ''' for line in table:
-        if "1" in line[3]:'''
-            
+    subscriber_list = []
+    for line in table:
+        if line[3] == "1":
+            subscriber = ";".join([line[2], line[1]])
+            subscriber_list.append(subscriber)
+    ui.print_result(subscriber_list, "Newsletter subscribers: \n")
+    return subscriber_list

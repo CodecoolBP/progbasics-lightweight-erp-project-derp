@@ -28,7 +28,7 @@ def start_module():
     while True:
             title = "HR manager"
             exit_message = "Back to main menu"
-            list_options = ["(1) Show table", "(2) Add", "(3) Remove", "(4) Update", "(5) Oldest Person"]
+            list_options = ["(1) Show table", "(2) Add", "(3) Remove", "(4) Update", "(5) Oldest Person", "(6) Age closest to average"]
             ui.print_menu(title,list_options, exit_message)
             
             inputs = ui.get_inputs(["Please enter a number: "], "")
@@ -48,6 +48,8 @@ def start_module():
                 update(table,ui.get_inputs(["ID: "], "")[0])
             elif option == "5":
                 get_oldest_person(table)
+            elif option == "6":
+                get_persons_closest_to_average(table)
             elif option == "0":
                 break
 
@@ -153,18 +155,14 @@ def get_oldest_person(table):
     for i in range(len(table)):
         if int(table[i][2]) < max_age:
             oldest_index = i
+           
             max_age = int(table[i][2])
     for j in range(len(table)):
         if int(table[j][2]) == max_age:
             all_oldest_index = j
             oldies.append(table[all_oldest_index][1])
-    print(oldies)
+    ui.print_result(oldies, max_age)
     return oldies
-
-
-                
-
-    
 
 def get_persons_closest_to_average(table):
     """
@@ -178,3 +176,40 @@ def get_persons_closest_to_average(table):
     """
 
     # your code
+
+    age_sum = 0
+    date_of_birth = []
+    date_of_birth_subtract = []
+    name_of_people = []
+    date_of_birth_dict = {}
+
+    for i in range(len(table)):
+        age_sum = age_sum + int(table[i][2])
+        average = age_sum / len(table)    
+
+
+    for i in range(len(table)):
+        names = i
+        name_of_people.append(table[names][1])
+
+
+    for i in date_of_birth:
+        i = int(i) - average
+        date_of_birth_subtract.append(i)
+
+
+    
+    for i in range(len(table)):
+        age_number = i
+        date_of_birth.append(table[age_number][2])
+
+
+
+    minimum=1000
+    name=name_of_people[0]
+    for i in range(len(date_of_birth)):
+        x = abs(int(average)-int(date_of_birth[i]))
+        if x < minimum:
+            minimum = x
+            name = name_of_people[i]
+    ui.print_result(name,"The name of the person closest to the average: \n")
