@@ -171,6 +171,7 @@ def get_longest_name_id(table):
             ids.append(table[all_longest_names][0])    
     longest_names_dict = dict(zip(names, ids))
     print(longest_names_dict)
+    
             #ui.print_result(table[all_longest_names][0], "ID")
             #ui.print_result(table[all_longest_names][1], "Name")'''
 
