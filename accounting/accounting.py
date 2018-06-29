@@ -30,7 +30,7 @@ def start_module():
     while True:
         title = "Accounting manager"
         exit_message = "Back to main menu"
-        list_options = "(1) Show table", "(2) Add", "(3) Remove", "(4) Update"
+        list_options = ["(1) Show table", "(2) Add", "(3) Remove", "(4) Update", "(5) Max profits"]
         ui.print_menu(title,list_options, exit_message)
         
         inputs = ui.get_inputs(["Please enter a number: "], "")
@@ -48,6 +48,8 @@ def start_module():
             remove(table,ui.get_inputs(["ID: "], "")[0])
         elif option == "4":
             update(table,ui.get_inputs(["ID: "], "")[0])
+        elif option == "5":
+            which_year_max(table)
         elif option == "0":
             break
 
@@ -104,9 +106,9 @@ def remove(table, id_):
         list: Table without specified record.
     """
 
-    for line in table:
-        if id_ in line:
-            table.remove(line)
+    for i in table:
+        if id_ in i:
+            table.remove(i)
             data_manager.write_table_to_file("accounting/items.csv", table)
             return table
 
@@ -128,14 +130,14 @@ def update(table, id_):
         list: table with updated record
     """
 
-    for idx, line in enumerate(table):
-        if id_ in line:
-            temp_line = []
-            for element in line:
+    for idx, i in enumerate(table):
+        if id_ in i:
+            temp_i = []
+            for element in i:
                 update_things = ui.get_inputs(["Update (" + str(element) + ") to: "], "")[0]
-                temp_line.append(update_things)
+                temp_i.append(update_things)
             del table[idx]
-            table.append(temp_line)
+            table.append(temp_i)
             break
     data_manager.write_table_to_file("accounting/items.csv", table)
 
@@ -155,6 +157,26 @@ def which_year_max(table):
     """
 
     # your code
+
+    old_year_profits = 0
+    new_year_profits = 0
+    for i in table:
+        if i[3] == "2016" and i[4] == "in":
+            new_year_profits += int(i[5])
+        elif i[3] == "2016" and i[4] == "out":
+            new_year_profits -= int(i[5])
+        elif i[3] == "2015" and i[4] == "in":
+            old_year_profits += int(i[5])
+        elif i[3] == "2015" and i[4] == "out":
+            old_year_profits -= int(i[5])
+    if new_year_profits > old_year_profits:
+        highest_profits = 2016
+        return ui.print_result(highest_profits, "Year with highest profit")
+    elif old_year_profits > new_year_profits:
+        highest_profits = 2015
+        return ui.print_result(highest_profits, "Year with highest profit")
+            
+
 
 
 def avg_amount(table, year):
