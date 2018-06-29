@@ -169,11 +169,10 @@ def get_longest_name_id(table):
             all_longest_names = j 
             names.append(table[all_longest_names][1])
             ids.append(table[all_longest_names][0])    
-    longest_names_dict = dict(zip(names, ids))
-    print(longest_names_dict)
+            longest_names_dict = dict(zip(names, ids))
+    ui.print_result(longest_names_dict, "List of people with the longest names")
     
-            #ui.print_result(table[all_longest_names][0], "ID")
-            #ui.print_result(table[all_longest_names][1], "Name")'''
+    
 
 
 

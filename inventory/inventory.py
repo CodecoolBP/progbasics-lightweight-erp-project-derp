@@ -89,7 +89,7 @@ def add(table):
 
 
 def remove(table, id_):
-    """
+    '''
     Remove a record with a given id from the table.
 
     Args:
@@ -98,7 +98,7 @@ def remove(table, id_):
 
     Returns:
         list: Table without specified record.
-    """
+    '''
 
     # your code
     for line in table:
@@ -109,7 +109,7 @@ def remove(table, id_):
 
 
 def update(table, id_):
-    """
+    '''
     Updates specified record in the table. Ask users for new data.
 
     Args:
@@ -118,7 +118,7 @@ def update(table, id_):
 
     Returns:
         list: table with updated record
-    """
+    '''
 
     # your code
     for idx, line in enumerate(table):
@@ -137,7 +137,7 @@ def update(table, id_):
 # ------------------
 
 def get_available_items(table):
-    """
+    '''
     Question: Which items have not exceeded their durability yet?
 
     Args:
@@ -145,7 +145,7 @@ def get_available_items(table):
 
     Returns:
         list: list of lists (the inner list contains the whole row with their actual data types)
-    """
+    '''
 
     # your code
 
