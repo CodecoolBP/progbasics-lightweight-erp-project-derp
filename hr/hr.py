@@ -151,18 +151,17 @@ def get_oldest_person(table):
 
     # your code
     max_age = 2018
-    oldies = []
+    
     for i in range(len(table)):
         if int(table[i][2]) < max_age:
             oldest_index = i
-           
             max_age = int(table[i][2])
-    for j in range(len(table)):
-        if int(table[j][2]) == max_age:
-            all_oldest_index = j
-            oldies.append(table[all_oldest_index][1])
-    ui.print_result(oldies, max_age)
-    return oldies
+            oldies = []
+            oldies.append(table[i][1])
+        elif int(table[i][2]) == max_age:
+            oldies.append(table[i][1])
+
+    return  ui.print_result(oldies, max_age)
 
 def get_persons_closest_to_average(table):
     """
@@ -181,29 +180,16 @@ def get_persons_closest_to_average(table):
     date_of_birth = []
     date_of_birth_subtract = []
     name_of_people = []
-    date_of_birth_dict = {}
-
+  
     for i in range(len(table)):
         age_sum = age_sum + int(table[i][2])
-        average = age_sum / len(table)    
-
-
-    for i in range(len(table)):
-        names = i
-        name_of_people.append(table[names][1])
-
+        name_of_people.append(table[i][1])
+        date_of_birth.append(table[i][2])
+    average = age_sum / len(table)
 
     for i in date_of_birth:
         i = int(i) - average
         date_of_birth_subtract.append(i)
-
-
-    
-    for i in range(len(table)):
-        age_number = i
-        date_of_birth.append(table[age_number][2])
-
-
 
     minimum=1000
     name=name_of_people[0]
