@@ -152,10 +152,6 @@ def get_longest_name_id(table):
                 the last by alphabetical order of the names)
         """
 
-    # your code
-
-  
-
 
     longest_name = len("a")
     names = []
@@ -164,16 +160,23 @@ def get_longest_name_id(table):
         if len(table[i][1]) > longest_name:
             longest_name_index = i
             longest_name = len(table[i][1])
-    for j in range(len(table)):
+            names = []
+            ids = []
+            names.append(table[i][1])
+            ids.append(table[i][0])
+        elif len(table[i][1]) == longest_name:
+            names.append(table[i][1])
+            ids.append(table[i][0])
+            
+    return ui.print_result(ids, "ids of people with longest names")
+    
+    '''for j in range(len(table)):
         if len(table[j][1]) == longest_name:
             all_longest_names = j 
             names.append(table[all_longest_names][1])
             ids.append(table[all_longest_names][0])    
             longest_names_dict = dict(zip(names, ids))
-    ui.print_result(longest_names_dict, "List of people with the longest names")
-    
-    
-
+    ui.print_result(longest_names_dict, "List of people with the longest names")'''
 
 
     
