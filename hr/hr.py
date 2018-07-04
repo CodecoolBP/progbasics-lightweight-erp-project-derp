@@ -27,7 +27,7 @@ def start_module():
     """
     while True:
             title = "HR manager"
-            exit_message = "Back to main menu"
+            exit_message = "(0) Back to main menu"
             list_options = ["(1) Show table", "(2) Add", "(3) Remove", "(4) Update", "(5) Oldest Person", "(6) Age closest to average"]
             ui.print_menu(title,list_options, exit_message)
             

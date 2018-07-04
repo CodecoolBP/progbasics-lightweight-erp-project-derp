@@ -66,7 +66,7 @@ def print_menu(title, list_options, exit_message):
     Returns:
         None: This function doesn't return anything it only prints to console.
     """
-    print("\n", title,"\n", str(list_options).replace("'", "\n" ).replace(",", "").replace("[", "").replace("]",""), exit_message)
+    print("\n", title,"\n", str(list_options).replace("'", "\n" ).replace(",", "").replace("[", "").replace("]",""), "\n",exit_message, "\n")
     # your code
 
 
