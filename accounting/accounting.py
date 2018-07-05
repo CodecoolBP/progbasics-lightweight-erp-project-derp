@@ -31,67 +31,28 @@ def start_module():
         title = "Accounting manager"
         exit_message = "(0) Back to main menu"
         list_options = ["(1) Show table", "(2) Add", "(3) Remove", "(4) Update", "(5) Max profits"]
-        ui.print_menu(title,list_options, exit_message)
-        
+        ui.print_menu(title, list_options, exit_message)
+
         inputs = ui.get_inputs(["Please enter a number: "], "")
         option = inputs[0]
         file_name = "accounting/items.csv"
-        title_list = ["id","title","price","month","day","year"]
+        title_list = ["id", "month", "day", "year", "type", "amount"]
         table = data_manager.get_table_from_file(file_name)
+        list_titles = ["month: ", "day: ", "year: ", "type: ", "amount: "]
         id_ = ''
 
         if option == "1":
-            common.show_table(table,title_list)
+            common.show_table(table, title_list)
         elif option == "2":
-            add(table)
+            common.add(table, list_titles, file_name)
         elif option == "3":
-            remove(table,ui.get_inputs(["ID: "], "")[0])
+            remove(table, ui.get_inputs(["ID: "], "")[0])
         elif option == "4":
-            update(table,ui.get_inputs(["ID: "], "")[0])
+            update(table, ui.get_inputs(["ID: "], "")[0])
         elif option == "5":
             which_year_max(table)
         elif option == "0":
             break
-
-
-    # you code
-
-
-def show_table(table):
-    """
-    Display a table
-
-    Args:
-        table (list): list of lists to be displayed.
-
-    Returns:
-        None
-    """
-    common.print_table(table, ["id", "month", "day", "year", "type", "amount"])
-    
-    # your code
-
-
-def add(table):
-    """
-    Asks user for input and adds it into the table.
-
-    Args:
-        table (list): table to add new record to
-
-    Returns:
-        list: Table with a new record
-    """
-
-    list_titles = ["month: ", "day: ", "year: ", "type: ", "amount: "]
-    new_item = ui.get_inputs(list_titles, " ")
-    table.append(new_item)
-    new_item.insert(0,common.generate_random(table))
-    data_manager.write_table_to_file("accounting/items.csv", table)
-    return table
-    # your code
-    # your code
-
 
 
 def remove(table, id_):

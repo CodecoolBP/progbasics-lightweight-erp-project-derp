@@ -39,12 +39,13 @@ def start_module():
             file_name = "sales/sales.csv"
             title_list = ["id","title","price","month","day","year"]
             table = data_manager.get_table_from_file(file_name)
+            list_titles = ["month: ", "day: ", "year: ", "type: ", "amount: "]
             id_ = ''
 
             if option == "1":
                 common.show_table(table,title_list)
             elif option == "2":
-                add(table)
+                common.add(table, list_titles, file_name)
             elif option == "3":
                 remove(table,ui.get_inputs(["ID: "], "")[0])
             elif option == "4":
@@ -54,26 +55,6 @@ def start_module():
             elif option == "0":
                 break
 
-
-
-def add(table):
-    """
-    Asks user for input and adds it into the table.
-
-    Args:
-        table (list): table to add new record to
-
-    Returns:
-        list: Table with a new record
-    """
-
-    # your code
-    list_titles = ["month: ", "day: ", "year: ", "type: ", "amount: "]
-    new_item = ui.get_inputs(list_titles, "")
-    table.append(new_item)
-    new_item.insert(0,common.generate_random(table))
-    data_manager.write_table_to_file("sales/sales.csv", table)
-    return table
 
 def remove(table, id_):
     """

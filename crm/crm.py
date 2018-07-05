@@ -35,14 +35,15 @@ def start_module():
             inputs = ui.get_inputs(["Please enter a number: "], "")
             option = inputs[0]
             file_name = "crm/customers.csv"
-            title_list = ["id","title","price","month","day","year"]
+            title_list = ["id", "name", "email", "subscribed"]
             table = data_manager.get_table_from_file(file_name)
+            list_titles = ["name: ", "email: ", "subscriber (0/1): "]
             id_ = ''
 
             if option == "1":
                 common.show_table(table,title_list)
             elif option == "2":
-                add(table)
+                common.add(table, list_titles, file_name)
             elif option == "3":
                 remove(table,ui.get_inputs(["ID: "], "")[0])
             elif option == "4":
@@ -53,43 +54,6 @@ def start_module():
                 get_subscribed_emails(table)
             elif option == "0":
                 break
-
-    # your code
-
-
-def show_table(table):
-    """
-    Display a table
-
-    Args:
-        table (list): list of lists to be displayed.
-
-    Returns:
-        None
-    """
-
-    # your code
-
-
-def add(table):
-    """
-    Asks user for input and adds it into the table.
-
-    Args:
-        table (list): table to add new record to
-
-    Returns:
-        list: Table with a new record
-    """
-    list_titles = ["month: ", "day: ", "year: ", "type: ", "amount: "]
-    new_item = ui.get_inputs(list_titles, "")
-    table.append(new_item)
-    new_item.insert(0,common.generate_random(table))
-    data_manager.write_table_to_file("crm/customers.csv", table)
-    return table
-    # your code
-
-    return table
 
 
 def remove(table, id_):
