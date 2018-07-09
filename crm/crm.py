@@ -147,21 +147,50 @@ def get_longest_name_id(table):
 # the question: Which customers has subscribed to the newsletter?
 # return type: list of strings (where string is like email+separator+name, separator=";")
 def get_subscribed_emails(table):
-    """
+        """
         Question: Which customers has subscribed to the newsletter?
 
         Args:
             table (list): data table to work on
 
-        Returns:
-            list: list of strings (where a string is like "email;name")
-        """
+    pass
+
+
+# functions supports data analyser
+# --------------------------------
+         """
+
+def get_name_by_id(id):
+
+    """
+    Reads the table with the help of the data_manager module.
+    Returns the name (str) of the customer with the given id (str) on None om case of non-existing id.
+
+    Args:
+        id (str): the id of the customer
+
+    Returns:
+        str the name of the customer
+    """
 
     # your code
-    subscriber_list = []
-    for line in table:
-        if line[3] == "1":
-            subscriber = ";".join([line[2], line[1]])
-            subscriber_list.append(subscriber)
-    ui.print_result(subscriber_list, "Newsletter subscribers: \n")
-    return subscriber_list
+
+    pass
+
+
+def get_name_by_id_from_table(table, id):
+
+    """
+    Returns the name (str) of the customer with the given id (str) on None om case of non-existing id.
+
+    Args:
+        table (list of lists): the customer table
+        id (str): the id of the customer
+
+    Returns:
+        str the name of the customer
+    """
+
+    # your code
+
+    pass
