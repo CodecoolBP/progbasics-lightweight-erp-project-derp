@@ -46,33 +46,13 @@ def start_module():
         elif option == "2":
             common.add(table, list_titles, file_name)
         elif option == "3":
-            remove(table,ui.get_inputs(["ID: "], "")[0])
+            common.remove(table,ui.get_inputs(["ID: "], "")[0], file_name)
         elif option == "4":
             update(table,ui.get_inputs(["ID: "], "")[0])
         elif option == "5":
             get_counts_by_manufacturers(table)
         elif option == "0":
             break
-
-
-def remove(table, id_):
-    """
-    Remove a record with a given id from the table.
-
-    Args:
-        table (list): table to remove a record from
-        id_ (str): id of a record to be removed
-
-    Returns:
-        list: Table without specified record.
-    """
-
-    # your code
-    for line in table:
-        if id_ in line:
-            table.remove(line)
-            data_manager.write_table_to_file("store/games.csv", table)
-            return table
 
 
 def update(table, id_):

@@ -46,37 +46,13 @@ def start_module():
         elif option == "2":
             common.add(table, list_titles, file_name)
         elif option == "3":
-            remove(table, ui.get_inputs(["ID: "], "")[0])
+            common.remove(table, ui.get_inputs(["ID: "], "")[0], file_name)
         elif option == "4":
             update(table, ui.get_inputs(["ID: "], "")[0])
         elif option == "5":
             which_year_max(table)
         elif option == "0":
             break
-
-
-def remove(table, id_):
-    """
-    Remove a record with a given id from the table.
-
-    Args:
-        table (list): table to remove a record from
-        id_ (str): id of a record to be removed
-
-    Returns:
-        list: Table without specified record.
-    """
-
-    for i in table:
-        if id_ in i:
-            table.remove(i)
-            data_manager.write_table_to_file("accounting/items.csv", table)
-            return table
-
-    
-
-    # your code
-
     
 
 def update(table, id_):

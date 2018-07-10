@@ -56,3 +56,22 @@ def add(table, list_titles, csv_file):
     new_item.insert(0, generate_random(table))
     data_manager.write_table_to_file(csv_file, table)
     return table
+
+def remove(table, id_, file_name):
+    """
+    Remove a record with a given id from the table.
+
+    Args:
+        table (list): table to remove a record from
+        id_ (str): id of a record to be removed
+
+    Returns:
+        list: Table without specified record.
+    """
+
+    # your code
+    for line in table:
+        if id_ in line:
+            table.remove(line)
+            data_manager.write_table_to_file(file_name, table)
+            return table
