@@ -53,9 +53,6 @@ def start_module():
             which_year_max(table)
         elif option == "0":
             break
-    
-
-
 
 
 # special functions:
@@ -71,8 +68,6 @@ def which_year_max(table):
     Returns:
         number
     """
-
-    # your code
 
     old_year_profits = 0
     new_year_profits = 0
@@ -91,8 +86,6 @@ def which_year_max(table):
     elif old_year_profits > new_year_profits:
         highest_profits = 2015
         return ui.print_result(highest_profits, "Year with highest profit")
-            
-
 
 
 def avg_amount(table, year):
@@ -106,5 +99,3 @@ def avg_amount(table, year):
     Returns:
         number
     """
-
-    # your code
