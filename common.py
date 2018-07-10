@@ -75,3 +75,26 @@ def remove(table, id_, file_name):
             table.remove(line)
             data_manager.write_table_to_file(file_name, table)
             return table
+
+def update(table, id_, file_name):
+    """
+    Updates specified record in the table. Ask users for new data.
+
+    Args:
+        table (list): list in which record should be updated
+        id_ (str): id of a record to update
+
+    Returns:
+        list: table with updated record
+    """
+
+    for idx, i in enumerate(table):
+        if id_ in i:
+            temp_i = []
+            for element in i:
+                update_things = ui.get_inputs(["Update (" + str(element) + ") to: "], "")[0]
+                temp_i.append(update_things)
+            del table[idx]
+            table.append(temp_i)
+            break
+    data_manager.write_table_to_file(file_name, table)

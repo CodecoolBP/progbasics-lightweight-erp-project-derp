@@ -47,38 +47,13 @@ def start_module():
             elif option == "3":
                 common.remove(table,ui.get_inputs(["ID: "], "")[0], file_name)
             elif option == "4":
-                update(table,ui.get_inputs(["ID: "], "")[0])
+                common.update(table,ui.get_inputs(["ID: "], "")[0], file_name)
             elif option == "5":
                 get_longest_name_id(table)
             elif option == "6":
                 get_subscribed_emails(table)
             elif option == "0":
                 break
-
-
-def update(table, id_):
-    """
-    Updates specified record in the table. Ask users for new data.
-
-    Args:
-        table (list): list in which record should be updated
-        id_ (str): id of a record to update
-
-    Returns:
-        list: table with updated record
-    """
-
-    # your code
-    for idx, line in enumerate(table):
-        if id_ in line:
-            temp_line = []
-            for element in line:
-                update_things = ui.get_inputs(["Update (" + str(element) + ") to: "], "")[0]
-                temp_line.append(update_things)
-            del table[idx]
-            table.append(temp_line)
-            break
-    data_manager.write_table_to_file("crm/customers.csv", table)
 
 
 # special functions:
