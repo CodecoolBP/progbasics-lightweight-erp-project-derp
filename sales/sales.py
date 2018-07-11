@@ -29,34 +29,48 @@ def start_module():
         None
     """
     while True:
-            title = "Sales manager"
-            exit_message = "(0) Back to main menu"
-            list_options = ["(1) Show table", "(2) Add", "(3) Remove", "(4) Update", "(5) Cheapo game"]
-            ui.print_menu(title,list_options, exit_message)
-            
-            inputs = ui.get_inputs(["Please enter a number: "], "")
-            option = inputs[0]
-            file_name = "sales/sales.csv"
-            title_list = ["id","title","price","month","day","year"]
-            table = data_manager.get_table_from_file(file_name)
-            list_titles = ["month: ", "day: ", "year: ", "type: ", "amount: "]
-            id_ = ''
+        title = "Sales manager"
+        exit_message = "(0) Back to main menu"
+        list_options = ["(1) Show table",
+                        "(2) Add",
+                        "(3) Remove",
+                        "(4) Update",
+                        "(5) Cheapo game",
+                        "(6) Items sold between",
+                        "(7) Get title by ID",
+                        "(8) Get item ID sold last"]
+        ui.print_menu(title, list_options, exit_message)
 
-            if option == "1":
-                common.show_table(table,title_list)
-            elif option == "2":
-                common.add(table, list_titles, file_name)
-            elif option == "3":
-                common.remove(table,ui.get_inputs(["ID: "], "")[0], file_name)
-            elif option == "4":
-                common.update(table,ui.get_inputs(["ID: "], "")[0], file_name)
-            elif option == "5":
-                get_lowest_price_item_id(table)
-            elif option == "0":
-                break
+        inputs = ui.get_inputs(["Please enter a number: "], "")
+        option = inputs[0]
+        file_name = "sales/sales.csv"
+        title_list = ["id", "title", "price", "month", "day", "year"]
+        table = data_manager.get_table_from_file(file_name)
+        list_titles = ["month: ", "day: ", "year: ", "type: ", "amount: "]
+        id_ = ''
+
+        if option == "1":
+            common.show_table(table, title_list)
+        elif option == "2":
+            common.add(table, list_titles, file_name)
+        elif option == "3":
+            common.remove(table, ui.get_inputs(["ID: "], "")[0], file_name)
+        elif option == "4":
+            common.update(table, ui.get_inputs(["ID: "], "")[0], file_name)
+        elif option == "5":
+            get_lowest_price_item_id(table)
+        elif option == "6":
+            get_items_sold_between(table, month_from, day_from, year_from, month_to, day_to, year_to)
+        elif option == "7":
+            get_title_by_id_from_table(table, ui.get_inputs(["ID: "], "")[0])
+        elif option == "8":
+            get_item_id_sold_last(table)
+        elif option == "0":
+            break
 
 # special functions:
 # ------------------
+
 
 def get_lowest_price_item_id(table):
     """
@@ -80,6 +94,7 @@ def get_lowest_price_item_id(table):
             id_of_lowest_price = table[lowest_index][0]
     ui.print_result(table[lowest_index][0], "ID of lowest priced item")
     return id_of_lowest_price
+
 
 def get_items_sold_between(table, month_from, day_from, year_from, month_to, day_to, year_to):
     """
@@ -129,7 +144,6 @@ def get_items_sold_between(table, month_from, day_from, year_from, month_to, day
 
 
 def get_title_by_id(id):
-
     """
     Reads the table with the help of the data_manager module.
     Returns the title (str) of the item with the given id (str) on None om case of non-existing id.
@@ -141,13 +155,13 @@ def get_title_by_id(id):
         str the title of the item
     """
 
-    # your code
-
-    pass
+    table = data_manager.get_table_from_file("sales/sales.csv")
+    for row in table:
+        if row[0] == id:
+            return row[1]
 
 
 def get_title_by_id_from_table(table, id):
-
     """
     Returns the title (str) of the item with the given id (str) on None om case of non-existing id.
 
@@ -158,13 +172,13 @@ def get_title_by_id_from_table(table, id):
     Returns:
         str the title of the item
     """
+    for row in table:
+        if row[0] == id:
+            ui.print_result(row[1], "Title")
+            return row[1]
 
-    # your code
 
-    pass
-
-
-def get_item_id_sold_last():
+def get_item_id_sold_last(table):
     """
     Reads the table with the help of the data_manager module.
     Returns the _id_ of the item that was sold most recently.
@@ -172,8 +186,6 @@ def get_item_id_sold_last():
     Returns:
         (str) the _id_ of the item that was sold most recently.
     """
-
-    # your code
 
     pass
 
@@ -216,7 +228,7 @@ def get_the_sum_of_prices(item_ids):
     Returns the sum of the prices of the items in the item_ids.
 
     Args:
-        item_ids (list of str): the ids
+        item_ids (list of str): the idss
 
     Returns:
         (number) the sum of the items' prices
