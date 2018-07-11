@@ -57,6 +57,7 @@ def add(table, list_titles, csv_file):
     data_manager.write_table_to_file(csv_file, table)
     return table
 
+
 def remove(table, id_, file_name):
     """
     Remove a record with a given id from the table.
@@ -75,6 +76,7 @@ def remove(table, id_, file_name):
             table.remove(line)
             data_manager.write_table_to_file(file_name, table)
             return table
+
 
 def update(table, id_, file_name):
     """
