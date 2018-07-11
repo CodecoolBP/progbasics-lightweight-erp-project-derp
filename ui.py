@@ -1,6 +1,7 @@
 """ User Interface (UI) module """
 import data_manager
 
+
 def print_table(table, title_list):
     """
     Prints table with data.
@@ -24,11 +25,11 @@ def print_table(table, title_list):
 
     # your goes code
 
-    for lines in table:        
+    for lines in table:
         for element in lines:
             print('| {} '.format(element), end='')
         print(' |\n')
-    
+
 
 def print_result(result, label):
     """---------------
@@ -43,7 +44,12 @@ def print_result(result, label):
     """
 
     # your code
-    print('{}: {}'.format(label, result))
+    if isinstance(result, str):
+        print('{}: {}'.format(label, result))
+    else:
+        print(label)
+        for item in result:
+            print(" | ".join(item.split(";")))
 
 
 def print_menu(title, list_options, exit_message):
@@ -66,7 +72,8 @@ def print_menu(title, list_options, exit_message):
     Returns:
         None: This function doesn't return anything it only prints to console.
     """
-    print("\n", title,"\n", str(list_options).replace("'", "\n" ).replace(",", "").replace("[", "").replace("]",""), "\n",exit_message, "\n")
+    print("\n", title, "\n", str(list_options).replace("'", "\n").replace(
+        ",", "").replace("[", "").replace("]", ""), "\n", exit_message, "\n")
     # your code
 
 
@@ -89,10 +96,10 @@ def get_inputs(list_labels, title):
         list: List of data given by the user. Sample return:
             [<user_input_1>, <user_input_2>, <user_input_3>]
     """
-    
+
     inputs = []
     for item in list_labels:
-        input_to_add = input('%s' %(item))
+        input_to_add = input('%s' % (item))
         inputs.append(input_to_add)
     return inputs
 
