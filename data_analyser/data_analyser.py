@@ -12,6 +12,7 @@ import ui
 import common
 from sales import sales
 from crm import crm
+import data_manager
 
 
 def start_module():
@@ -24,9 +25,39 @@ def start_module():
         None
     """
 
-    # your code
+    while True:
+        title = "Data analyser"
+        exit_message = "(0) Back to main menu"
+        list_options = ["(1) Last buyer name",
+                        "(2) Last buyer ID",
+                        "(3) Buyer name spent most and the money spent",
+                        "(4) Buyer ID spent most and the money spent",
+                        "(5) The most frequent buyers names",
+                        "(6) The most frequent buyers IDs"]
 
-    pass
+        ui.print_menu(title, list_options, exit_message)
+        inputs = ui.get_inputs(["Please enter a number: "], "")
+        option = inputs[0]
+        file_name = "crm/customers.csv"
+        title_list = ["id", "name", "email", "subscribed"]
+        table = data_manager.get_table_from_file(file_name)
+        list_titles = ["name: ", "email: ", "subscriber (0/1): "]
+        id_ = ''
+
+        if option == "1":
+            common.show_table(table, title_list)
+        elif option == "2":
+            common.add(table, list_titles, file_name)
+        elif option == "3":
+            common.remove(table, ui.get_inputs(["ID: "], "")[0], file_name)
+        elif option == "4":
+            common.update(table, ui.get_inputs(["ID: "], "")[0], file_name)
+        elif option == "5":
+            get_oldest_person(table)
+        elif option == "6":
+            get_persons_closest_to_average(table)
+        elif option == "0":
+            break
 
 
 def get_the_last_buyer_name():
@@ -36,8 +67,6 @@ def get_the_last_buyer_name():
     Returns:
         Customer name of the last buyer
     """
-
-    # your code
 
     pass
 
